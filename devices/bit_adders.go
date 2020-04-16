@@ -37,3 +37,21 @@ func (a *eightBitAdder) Add(isSubtraction uint8, input1, input2 []uint8) (result
 
 	return []uint8{overflowOrUnderflow, out8, out7, out6, out5, out4, out3, out2, out1}
 }
+
+type eightBitLatchedAdder struct {
+	adder *eightBitAdder
+	latch *modules.EightBitLatch
+}
+
+func NewEightBitLatchedAdder() *eightBitLatchedAdder {
+	return &eightBitLatchedAdder{
+		NewEightBitAdder(),
+		modules.NewEightBitLatch(),
+	}
+}
+
+func (a *eightBitLatchedAdder) Add(isSubtraction, clear uint8, input []uint8) []uint8 {
+	result := a.adder.Add(isSubtraction, input, a.latch.GetCurrentQuits())[1:]
+	a.latch.Process(1, clear, result)
+	return a.latch.GetCurrentQuits()
+}
