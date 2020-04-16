@@ -24,7 +24,7 @@ func NewEightBitLatch() *EightBitLatch {
 	return l
 }
 
-func (l *EightBitLatch) Process(clock, clear uint8, input []uint8) []uint8 {
+func (l *EightBitLatch) Process(clear, clock uint8, input []uint8) []uint8 {
 	quit1, _ := l.trigger1.Process(clear, clock, input[0])
 	quit2, _ := l.trigger2.Process(clear, clock, input[1])
 	quit3, _ := l.trigger3.Process(clear, clock, input[2])

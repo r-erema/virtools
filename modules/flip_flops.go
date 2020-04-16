@@ -28,10 +28,10 @@ func NewDTypeFlipFlop() *dTypeFlipFlop {
 	return &dTypeFlipFlop{NewRsFlipFlop()}
 }
 
-func (t *dTypeFlipFlop) Process(clear, clock, data uint8) (quit, quitOpposite uint8) {
+func (t *dTypeFlipFlop) Process(clear, clock, dataInput uint8) (quit, quitOpposite uint8) {
 	return t.rsTrigger.Process(
-		gates.OR(clear, gates.AND(gates.NOT(data), clock)),
-		gates.AND(clock, data),
+		gates.OR(clear, gates.AND(gates.NOT(dataInput), clock)),
+		gates.AND(clock, dataInput),
 	)
 }
 

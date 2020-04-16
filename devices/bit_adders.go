@@ -52,6 +52,6 @@ func NewEightBitLatchedAdder() *eightBitLatchedAdder {
 
 func (a *eightBitLatchedAdder) Add(isSubtraction, clear uint8, input []uint8) []uint8 {
 	result := a.adder.Add(isSubtraction, input, a.latch.GetCurrentQuits())[1:]
-	a.latch.Process(1, clear, result)
+	a.latch.Process(clear, 1, result)
 	return a.latch.GetCurrentQuits()
 }

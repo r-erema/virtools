@@ -13,7 +13,7 @@ func TestEightBitLatchProcess(t *testing.T) {
 	assert.Equal(t, []uint8{0, 0, 0, 0, 0, 0, 0, 0}, result)
 	assert.Equal(t, []uint8{0, 0, 0, 0, 0, 0, 0, 0}, l.GetCurrentQuits())
 
-	result = l.Process(1, 0, data)
+	result = l.Process(0, 1, data)
 	assert.Equal(t, data, result)
 	assert.Equal(t, data, l.GetCurrentQuits())
 
