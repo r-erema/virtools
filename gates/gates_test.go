@@ -7,8 +7,7 @@ import (
 
 func TestAND(t *testing.T) {
 	tests := []struct {
-		input1, input2 uint8
-		wantOut        uint8
+		input1, input2, wantOut uint8
 	}{
 		{1, 1, 1},
 		{1, 0, 0},
@@ -26,8 +25,7 @@ func TestAND(t *testing.T) {
 
 func TestNAND(t *testing.T) {
 	tests := []struct {
-		input1, input2 uint8
-		wantOut        uint8
+		input1, input2, wantOut uint8
 	}{
 		{1, 1, 0},
 		{1, 0, 1},
@@ -45,8 +43,7 @@ func TestNAND(t *testing.T) {
 
 func TestOR(t *testing.T) {
 	tests := []struct {
-		input1, input2 uint8
-		wantOut        uint8
+		input1, input2, wantOut uint8
 	}{
 		{0, 1, 1},
 		{1, 0, 1},
@@ -64,8 +61,7 @@ func TestOR(t *testing.T) {
 
 func TestNOR(t *testing.T) {
 	tests := []struct {
-		input1, input2 uint8
-		wantOut        uint8
+		input1, input2, wantOut uint8
 	}{
 		{0, 1, 0},
 		{1, 0, 0},
@@ -81,10 +77,27 @@ func TestNOR(t *testing.T) {
 	}
 }
 
+func TestXOR(t *testing.T) {
+	tests := []struct {
+		input1, input2, wantOut uint8
+	}{
+		{0, 1, 1},
+		{1, 0, 1},
+		{1, 1, 0},
+		{0, 0, 0},
+	}
+	for i, tt := range tests {
+		t.Run(fmt.Sprintf("Test %d", i), func(t *testing.T) {
+			if got := XOR(tt.input1, tt.input2); got != tt.wantOut {
+				t.Errorf("XOR() = %v, want %v", got, tt.wantOut)
+			}
+		})
+	}
+}
+
 func TestNOT(t *testing.T) {
 	tests := []struct {
-		input   uint8
-		wantOut uint8
+		input, wantOut uint8
 	}{
 		{1, 0},
 		{0, 1},
