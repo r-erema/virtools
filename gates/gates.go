@@ -99,14 +99,21 @@ func NOR(input1, input2 uint8) uint8 {
 	return <-relay2.Out()
 }
 
-func NOT(input1 uint8) uint8 {
+func XOR(input1, input2 uint8) uint8 {
+	return AND(
+		OR(input1, input2),
+		NAND(input1, input2),
+	)
+}
+
+func NOT(input uint8) uint8 {
 	relayIn := make(chan primitives.RelayInSignals)
 	relay := primitives.NewRelay(relayIn, primitives.LeverTypeClosed)
 
 	battery := primitives.NewSignalSource()
 	go func() {
 		for batterySignal := range battery.Out() {
-			relayIn <- primitives.RelayInSignals{InSignal: input1, LeverSignal: batterySignal}
+			relayIn <- primitives.RelayInSignals{InSignal: input, LeverSignal: batterySignal}
 		}
 	}()
 
