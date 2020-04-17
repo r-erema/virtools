@@ -52,7 +52,7 @@ func TestThreeToEightDecoder_Process(t *testing.T) {
 			[]uint8{0, 0, 0, 0, 0, 0, 0, 1},
 		},
 	}
-	d := NewThreeToEightDecoder()
+	d := NewDecoder3x8()
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test %d", i), func(t *testing.T) {
 			assert.Equal(t, tt.wantResult, d.Process(tt.dataInput, tt.selectInputs))

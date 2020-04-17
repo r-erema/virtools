@@ -21,7 +21,7 @@ func (a *eightBitAdder) Add(isSubtraction uint8, input1, input2 []uint8) (result
 	adder7 := modules.NewFullAdder()
 	adder8 := modules.NewFullAdder()
 
-	complement := modules.NewEightBitOnesComplement()
+	complement := modules.NewOnesComplement8Bit()
 	input2 = complement.Process(isSubtraction, input2)
 
 	out1, carry := adder1.Add(isSubtraction, input1[7], input2[7])
@@ -40,13 +40,13 @@ func (a *eightBitAdder) Add(isSubtraction uint8, input1, input2 []uint8) (result
 
 type eightBitLatchedAdder struct {
 	adder *eightBitAdder
-	latch *modules.EightBitLatch
+	latch *modules.Latch8Bit
 }
 
 func NewEightBitLatchedAdder() *eightBitLatchedAdder {
 	return &eightBitLatchedAdder{
 		NewEightBitAdder(),
-		modules.NewEightBitLatch(),
+		modules.NewLatch8Bit(),
 	}
 }
 

@@ -6,7 +6,7 @@ import (
 )
 
 func TestEightBitLatchProcess(t *testing.T) {
-	l := NewEightBitLatch()
+	l := NewLatch8Bit()
 	data := []uint8{1, 1, 1, 0, 0, 0, 0, 1}
 
 	result := l.Process(0, 0, data)

@@ -1,6 +1,6 @@
 package modules
 
-type EightBitLatch struct {
+type Latch8Bit struct {
 	trigger1,
 	trigger2,
 	trigger3,
@@ -11,8 +11,8 @@ type EightBitLatch struct {
 	trigger8 *dTypeFlipFlop
 }
 
-func NewEightBitLatch() *EightBitLatch {
-	l := &EightBitLatch{}
+func NewLatch8Bit() *Latch8Bit {
+	l := &Latch8Bit{}
 	l.trigger1 = NewDTypeFlipFlop()
 	l.trigger2 = NewDTypeFlipFlop()
 	l.trigger3 = NewDTypeFlipFlop()
@@ -24,7 +24,7 @@ func NewEightBitLatch() *EightBitLatch {
 	return l
 }
 
-func (l *EightBitLatch) Process(clear, clock uint8, input []uint8) []uint8 {
+func (l *Latch8Bit) Process(clear, clock uint8, input []uint8) []uint8 {
 	quit1, _ := l.trigger1.Process(clear, clock, input[0])
 	quit2, _ := l.trigger2.Process(clear, clock, input[1])
 	quit3, _ := l.trigger3.Process(clear, clock, input[2])
@@ -36,7 +36,7 @@ func (l *EightBitLatch) Process(clear, clock uint8, input []uint8) []uint8 {
 	return []uint8{quit1, quit2, quit3, quit4, quit5, quit6, quit7, quit8}
 }
 
-func (l *EightBitLatch) GetCurrentQuits() []uint8 {
+func (l *Latch8Bit) GetCurrentQuits() []uint8 {
 	return []uint8{
 		l.trigger1.Quit(),
 		l.trigger2.Quit(),

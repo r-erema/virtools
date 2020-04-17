@@ -52,7 +52,7 @@ func TestEightToOneSelectorProcess(t *testing.T) {
 			0,
 		},
 	}
-	s := NewEightToOneSelector()
+	s := NewSelector8x1()
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test %d", i), func(t *testing.T) {
 			assert.Equal(t, tt.wantResult, s.Process(tt.dataInputs, tt.selectInputs))

@@ -22,7 +22,7 @@ func TestEightBitOnesComplementProcess(t *testing.T) {
 			[]uint8{0, 0, 0, 1, 1, 1, 0, 1},
 		},
 	}
-	oc := NewEightBitOnesComplement()
+	oc := NewOnesComplement8Bit()
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("Test %d", i), func(t *testing.T) {
 			assert.Equal(t, tt.wantResult, oc.Process(tt.isSubtraction, tt.input))

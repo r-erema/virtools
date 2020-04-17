@@ -2,13 +2,13 @@ package modules
 
 import "virtools/gates"
 
-type EightToOneSelector struct{}
+type Selector8x1 struct{}
 
-func NewEightToOneSelector() *EightToOneSelector {
-	return &EightToOneSelector{}
+func NewSelector8x1() *Selector8x1 {
+	return &Selector8x1{}
 }
 
-func (s *EightToOneSelector) Process(dataInputs []uint8, selectInputs []uint8) uint8 {
+func (s *Selector8x1) Process(dataInputs []uint8, selectInputs []uint8) uint8 {
 
 	si0 := selectInputs[0]
 	si1 := selectInputs[1]

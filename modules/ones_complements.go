@@ -2,13 +2,13 @@ package modules
 
 import "virtools/gates"
 
-type eightBitOnesComplement struct{}
+type OnesComplement8Bit struct{}
 
-func NewEightBitOnesComplement() *eightBitOnesComplement {
-	return &eightBitOnesComplement{}
+func NewOnesComplement8Bit() *OnesComplement8Bit {
+	return &OnesComplement8Bit{}
 }
 
-func (oc *eightBitOnesComplement) Process(isSubtraction uint8, input []uint8) []uint8 {
+func (oc *OnesComplement8Bit) Process(isSubtraction uint8, input []uint8) []uint8 {
 	return []uint8{
 		gates.XOR(isSubtraction, input[0]),
 		gates.XOR(isSubtraction, input[1]),
