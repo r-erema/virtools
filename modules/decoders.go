@@ -2,13 +2,13 @@ package modules
 
 import "virtools/gates"
 
-type Decoder3x8 struct{}
+type decoder3x8 struct{}
 
-func NewDecoder3x8() *Decoder3x8 {
-	return &Decoder3x8{}
+func NewDecoder3x8() *decoder3x8 {
+	return &decoder3x8{}
 }
 
-func (d *Decoder3x8) Process(data uint8, selectInputs []uint8) (outs []uint8) {
+func (d *decoder3x8) Process(data uint8, selectInputs []uint8) (outs []uint8) {
 
 	sel0 := selectInputs[0]
 	sel1 := selectInputs[1]

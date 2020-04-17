@@ -17,9 +17,9 @@ func TestEightToOneSelectorProcess(t *testing.T) {
 			1,
 		},
 		{
-			[]uint8{1, 0, 1, 1, 1, 1, 1, 1},
+			[]uint8{0, 1, 0, 0, 0, 0, 0, 0},
 			[]uint8{1, 0, 0},
-			0,
+			1,
 		},
 		{
 			[]uint8{0, 0, 1, 0, 0, 0, 0, 0},
@@ -32,14 +32,14 @@ func TestEightToOneSelectorProcess(t *testing.T) {
 			1,
 		},
 		{
-			[]uint8{1, 1, 1, 1, 0, 1, 1, 1},
+			[]uint8{0, 0, 0, 0, 1, 0, 0, 0},
 			[]uint8{0, 0, 1},
-			0,
+			1,
 		},
 		{
-			[]uint8{1, 1, 1, 1, 1, 0, 1, 1},
+			[]uint8{0, 0, 0, 0, 0, 1, 0, 0},
 			[]uint8{1, 0, 1},
-			0,
+			1,
 		},
 		{
 			[]uint8{0, 0, 0, 0, 0, 0, 1, 0},
@@ -47,9 +47,9 @@ func TestEightToOneSelectorProcess(t *testing.T) {
 			1,
 		},
 		{
-			[]uint8{1, 1, 1, 1, 1, 1, 1, 0},
+			[]uint8{0, 0, 0, 0, 0, 0, 0, 1},
 			[]uint8{1, 1, 1},
-			0,
+			1,
 		},
 	}
 	s := NewSelector8x1()
