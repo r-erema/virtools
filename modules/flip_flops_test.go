@@ -63,12 +63,20 @@ func TestDTypeLevelTriggeredFlipFlopProcess(t *testing.T) {
 
 func TestDTypeEdgeTriggeredFlipFlopProcess(t *testing.T) {
 	trigger := NewDTypeEdgeTriggeredFlipFlop()
-	q, qo := trigger.Process(1, 1)
+
+	q, qo := trigger.Process(0, 0)
+	assert.Equal(t, uint8(0), q)
+	assert.Equal(t, uint8(1), qo)
+
+	q, qo = trigger.Process(0, 1)
+	assert.Equal(t, uint8(0), q)
+	assert.Equal(t, uint8(1), qo)
+
+	q, qo = trigger.Process(1, 1)
 	assert.Equal(t, uint8(1), q)
 	assert.Equal(t, uint8(0), qo)
 
-	trigger = NewDTypeEdgeTriggeredFlipFlop()
 	q, qo = trigger.Process(1, 0)
-	assert.Equal(t, uint8(0), q)
-	assert.Equal(t, uint8(1), qo)
+	assert.Equal(t, uint8(1), q)
+	assert.Equal(t, uint8(0), qo)
 }

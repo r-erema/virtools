@@ -50,9 +50,13 @@ func NewDTypeEdgeTriggeredFlipFlop() *dTypeEdgeTriggeredFlipFlop {
 
 func (t *dTypeEdgeTriggeredFlipFlop) Process(clock, dataInput uint8) (quit, quitOpposite uint8) {
 	step1Result1 := gates.AND(dataInput, gates.NOT(clock))
-	step1Result2 := gates.AND(gates.NOT(dataInput), clock)
+	step1Result2 := gates.AND(gates.NOT(clock), gates.NOT(dataInput))
 	qLevel1, qOppositeLevel1 := t.rsTriggerStep1.Process(step1Result1, step1Result2)
 	step2Result1 := gates.AND(qLevel1, clock)
 	step2Result2 := gates.AND(qOppositeLevel1, clock)
 	return t.rsTriggerStep2.Process(step2Result1, step2Result2)
+}
+
+func (t *dTypeEdgeTriggeredFlipFlop) Quits() (uint8, uint8) {
+	return t.rsTriggerStep2.quit, t.rsTriggerStep2.quitOpposite
 }
