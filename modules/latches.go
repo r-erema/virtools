@@ -8,19 +8,19 @@ type Latch8Bit struct {
 	trigger5,
 	trigger6,
 	trigger7,
-	trigger8 *dTypeFlipFlop
+	trigger8 *dTypeLevelTriggeredFlipFlop
 }
 
 func NewLatch8Bit() *Latch8Bit {
 	l := &Latch8Bit{}
-	l.trigger1 = NewDTypeFlipFlop()
-	l.trigger2 = NewDTypeFlipFlop()
-	l.trigger3 = NewDTypeFlipFlop()
-	l.trigger4 = NewDTypeFlipFlop()
-	l.trigger5 = NewDTypeFlipFlop()
-	l.trigger6 = NewDTypeFlipFlop()
-	l.trigger7 = NewDTypeFlipFlop()
-	l.trigger8 = NewDTypeFlipFlop()
+	l.trigger1 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger2 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger3 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger4 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger5 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger6 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger7 = NewDTypeLevelTriggeredFlipFlop()
+	l.trigger8 = NewDTypeLevelTriggeredFlipFlop()
 	return l
 }
 

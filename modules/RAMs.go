@@ -8,14 +8,14 @@ import (
 
 type ram8x1 struct {
 	decoder  decoder3x8
-	triggers []dTypeFlipFlop
+	triggers []dTypeLevelTriggeredFlipFlop
 	selector selector8x1
 }
 
 func NewRAM8x1() *ram8x1 {
-	var triggers []dTypeFlipFlop
+	var triggers []dTypeLevelTriggeredFlipFlop
 	for i := 0; i < 8; i++ {
-		triggers = append(triggers, *NewDTypeFlipFlop())
+		triggers = append(triggers, *NewDTypeLevelTriggeredFlipFlop())
 	}
 	return &ram8x1{
 		decoder:  *NewDecoder3x8(),
